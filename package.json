@@ -1,0 +1,25 @@
+{
+  "name": "trabajo-integrador-relacional-backend-diplomatura-untref",
+  "version": "1.0.0",
+  "description": "En este proyecto, desarrollarás una plataforma de streaming usando Node.js y MySQL. La aplicación permitirá realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre una base de datos relacional, utilizando el archivo trailerflix.json como referencia para diseñar el modelo de datos.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --watch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "José Barone",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.11.3",
+    "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "standard": "^17.1.2"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
+}

@@ -1,27 +1,28 @@
-const express = require('express');
-const router = express.Router();
-const db = require('../conexion/database');
+import express from 'express'
+// import sequelize from '../conexion/database.js'
+
+const router = express.Router()
 
 // Routes for CRUD
 router.get('/', (req, res) => {
-    // Get all content
-});
+  // Get all content
+  res.send('Hola esta es la APP')
+})
 
 router.get('/:id', (req, res) => {
-    // Get content by ID
-});
+  // Get content by ID
+})
 
 router.post('/', (req, res) => {
-    // Add new content
-});
+  // Add new content
+})
 
 router.put('/:id', (req, res) => {
-    // Update content by ID
-});
+  // Update content by ID
+})
 
 router.delete('/:id', (req, res) => {
-    // Delete content by ID
-});
+  // Delete content by ID
+})
 
-module.exports = router;
-    
+export default router
