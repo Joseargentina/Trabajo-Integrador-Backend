@@ -1,9 +1,9 @@
 import { Model, DataTypes } from 'sequelize'
 import sequelize from '../conexion/dataBase.js'
 // import Contenido from './contenido.js'
-class Categorias extends Model {}
+class Genero extends Model {}
 
-Categorias.init(
+Genero.init(
   {
     id: {
       type: DataTypes.BIGINT,
@@ -15,17 +15,17 @@ Categorias.init(
       allowNull: false,
       unique: true
     }
+
   },
   {
     sequelize,
-    modelName: 'Categorias',
-    tableName: 'categorias',
+    modelName: 'Genero',
+    tableName: 'generos',
     timestamps: false
   }
 )
 
-// Definir relaciones
-// Categorias.hasMany(Contenido, { foreignKey: 'id_categoria', sourceKey: 'id' })
-// Contenido.belongsTo(Categorias, { foreignKey: 'id_categoria', targetKey: 'id' })
+// Definir las relaciones con Contenido
+// Genero.belongsToMany(Contenido, { through: 'contenido_generos', foreignKey: 'id_genero' })
 
-export default Categorias
+export default Genero

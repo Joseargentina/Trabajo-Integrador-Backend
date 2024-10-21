@@ -1,28 +1,31 @@
 import express from 'express'
-// import sequelize from '../conexion/database.js'
+import Contenido from '../models/contenido.js'
 
 const router = express.Router()
 
-// Routes for CRUD
-router.get('/', (req, res) => {
-  // Get all content
-  res.send('Hola esta es la APP')
+// Endpoint que devuelve todos los contenidos de la base de datos.
+// Control de errores para manejar la indisponibilidad de la base de datos.
+router.get('/contenidos', async (req, res) => {
+  await Contenido.findAll()
 })
 
-router.get('/:id', (req, res) => {
-  // Get content by ID
+// Endpoint para obtener un contenido específico.
+// Control de errores para manejar casos en que el contenido no exista.
+router.get('/contenidos/:id', (req, res) => {
+  res.send('Hola productos por ID')
 })
 
+// Endpoint para filtrar por título, género o categoría.
 router.post('/', (req, res) => {
-  // Add new content
+
 })
 
 router.put('/:id', (req, res) => {
-  // Update content by ID
+
 })
 
 router.delete('/:id', (req, res) => {
-  // Delete content by ID
+
 })
 
 export default router
