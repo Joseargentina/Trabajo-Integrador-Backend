@@ -1,6 +1,5 @@
 import { Model, DataTypes } from 'sequelize'
-import sequelize from '../conection/dataBase.js'
-// import Contenido from './contenido.js'
+import sequelize from '../conexion/dataBase.js'
 class Actor extends Model {}
 
 Actor.init(
@@ -29,8 +28,4 @@ Actor.init(
     timestamps: false
   }
 )
-
-// Relaciones con Contenido
-// Actor.belongsToMany(Contenido, { through: 'contenido_actores', foreignKey: 'id_actor' })
-
 export default Actor

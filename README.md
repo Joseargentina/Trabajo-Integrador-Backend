@@ -1,77 +1,21 @@
-# Proyecto Integrador: CRUD con Node.js y MySQL
+#  Proyecto Integrador: CRUD con Node.js y MySQL 
+# TrailerFlix
 
-## Descripción del Proyecto
+## Descripción
 
-En este proyecto, desarrollarás una plataforma de streaming usando Node.js y MySQL. La aplicación permitirá realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre una base de datos relacional, utilizando el archivo trailerflix.json como referencia para diseñar el modelo de datos.
+TrailerFlix es una API CRUD para gestionar un catálogo de películas y series en una base de datos MySQL. Este proyecto se basa en un archivo JSON (`trailerflix.json`) y permite realizar operaciones como obtener, filtrar, agregar, actualizar y eliminar contenidos.
 
-## Entrega
-Esta entrega se enfocará en diseñar y crear la base de datos para una plataforma de streaming, usando MySQL y Node.js, junto con su respectiva documentación.
+## Diseño de la Base de Datos
 
-Aprovecha lo visto en las clases para comenzar a diseñar las tablas y relaciones necesarias, las cuales deberán estar basadas en las propiedades del archivo trailerflix.json.
+El diseño de la base de datos fue realizado en [dbdiagram.io](https://dbdiagram.io/home). Una vez completado, se exportaron los scripts en formato `.sql` para ejecutarlos en MySQL Workbench.
 
-## Dataset Proporcionados
+- [Ver el diseño realizado en DB Diagram](./diseñoDB-TrailerFlix.pdf)
+- [Ver los scripts de creación de la base de datos SQL](./Proyecto-final-Backend-TrailerFlix.sql)
+- [Ver los scripts de inserción de datos SQL](./Ingresar-datos-TrailerFlix-Backend.sql)
 
-- **trailerflix.json**: Contiene información detallada sobre contenido de la plataforma, como películas y series. Deberás utilizar este archivo como base para diseñar el modelo de datos.
+Después, se creó la base de datos utilizando este diseño, y mediante una IA, se generaron los scripts necesarios para insertar los datos desde el archivo JSON proporcionado.
 
-## Modelo de Base de Datos
-El archivo trailerflix.json incluye propiedades como ID, título, categorías, géneros, resumen, temporadas, reparto y enlaces a trailers. Basado en esta estructura, debes diseñar una base de datos llamada trailerflix con al menos 6 tablas relacionales. Entre ellas:
-
-- **contenido**: Tabla principal con la información de películas y series.
-- **categorías**: Definirá si el contenido es una película o una serie.
-- **géneros**: Almacenará los géneros como Ciencia Ficción, Fantasía, etc.
-- **actores**: Información sobre los actores principales de cada contenido.
-- **tabla intermedia contenido-actores**: Relacionará el contenido con los actores.
-El diseño debe ser bocetado primero en papel y luego implementado en la plataforma **DB Designer** sugerida en clase. Debes generar un archivo SQL de exportación que podrás usar para crear las tablas en MySQL.
-
-## Pasos a Seguir
-1. **Diseñar el modelo de datos** basado en trailerflix.json.
-2. **Implementar las tablas** en DB Designer, asegurando que haya relaciones adecuadas entre ellas.
-3. **Generar el archivo SQL** para crear las tablas en MySQL.
-4. **Migrar los datos** del archivo JSON a MySQL utilizando los insert correspondientes.
-
-## Funcionalidades del CRUD
-
-1. **Obtener todos los contenidos**
-   - Endpoint que devuelve todos los contenidos de la base de datos.
-   - Control de errores para manejar la indisponibilidad de la base de datos.
-
-2. **Obtener un contenido por ID**
-   - Endpoint para obtener un contenido específico.
-   - Control de errores para manejar casos en que el contenido no exista.
-
-3. **Filtrar contenidos**
-   - Endpoint para filtrar por título, género o categoría.
-   - Control de errores para manejar coincidencias no encontradas o problemas de conexión...
-
-4. **Agregar un nuevo contenido**
-   - Endpoint para agregar una nueva pelicula o serie a la base de datos.
-   - Validación de campos obligatorios.
-
-5. **Actualizar un contenido:**
-   - Endpoint para actualizar información como temporadas o reparto.
-   - Control de errores para manejar actualizaciones fallidas.
-     
-6. **Eliminar un contenido**
-   - Endpoint para eliminar un contenido de la base de datos.
-   - Control de errores para manejar problemas durante el borrado.
-
-7. **Control de errores**
-   - Manejo de errores en la estructura de las solicitudes y respuestas.
-   - Respuesta adecuada con mensajes y códigos de error específicos.
-   - Control de acceso a rutas no existentes con respuestas apropiadas.
-  
-## Herramientas Sugeridas
-Utiliza una **I.A.** como sugerimos en clase para optimizar la inserción de los datos del JSON a la base de datos. Esto puede ayudarte a transformar el archivo *trailerflix.json* en un formato que sea más fácil de insertar en MySQL.
-
-## Fechas Importantes
-
-- **Avance del Proyecto**: 10 de octubre de 2024
-  - Tener diseñadas las tablas en DB Designer, con el archivo SQL generado y los primeros endpoints funcionando.
-
-- **Presentación Final**: 24 de octubre de 2024
-  - Proyecto completo con CRUD y toda la documentación.
-
-## Estructura del Repositorio
+## Estructura del Proyecto
 
 ```plaintext
 /json
@@ -80,49 +24,109 @@ Utiliza una **I.A.** como sugerimos en clase para optimizar la inserción de los
 /app.js
 /conexion/
   - database.js
-/models/
-  - contenido.js
-  - categoria.js
-  - genero.js
-  - actor.js
-/routes/
-  - contenidoRoutes.js
+/src/
+  /models/
+    - contenido.js
+    - categoria.js
+    - generos.js
+    - actor.js
+    - contenidoGeneros.js
+    - contenidoActores.js
+    - contenidoBusqueda.js
+    - relaciones.js
+  /routes/
+    - contenidoRoutes.js
+    - contenidoSchema.js
 ```
 
-### Descripción de Archivos
+### Explicación de la Estructura
 
-- **/json**: Contiene el archivo trailerflix.json con los datos de películas y series.
-- **/README.md**: Este archivo, con la descripción del proyecto.
-- **/app.js**: Archivo principal de la aplicación Node.js.
-- **/conexion/database.js**: Configuración de la conexión a MySQL.
-- **/models/**: Modelos de datos para las tablas en MySQL.
-- **/routes/**: Definición de las rutas y endpoints del CRUD.
+- `/json/trailerflix.json`: Archivo JSON que contiene los datos de películas y series.
+- `/app.js`: Archivo principal de la aplicación donde se configuran las rutas y la conexión con la base de datos.
+- `/app.http`: Archivo en el que se encuentran las rutas para ser probadas.
+- `src/conexion/database.js`: Archivo para establecer la conexión con MySQL.
+- `src/models`: Contiene los modelos de datos para cada entidad (contenido, categorías, géneros, actores).
+  - `contenido.js`: Modelo para gestionar los contenidos.
+  - `categoria.js`: Modelo de las categorías de los contenidos.
+  - `generos.js`: Modelo de los géneros.
+  - `actor.js`: Modelo de los actores.
+  - `contenidoGeneros.js`, `contenidoActores.js`: Relaciones entre contenido, géneros y actores.
+  - `contenidoBusqueda.js`: Funciones para realizar búsquedas filtradas.
+  - `relaciones.js`: Archivo para definir relaciones entre las tablas de la base de datos.
+- `src/routes/contenidoRoutes.js`: Define las rutas del CRUD para los contenidos.
+- `src/controllers/contenidoSchema.js`: Define el esquema de validación para los contenidos.
+- `src/controllers/contenidoController.js`: Se encarga de la logica y el manejo de errores de los endpoint.
 
-## Instrucciones de Entrega
+## Instalación y Uso
 
-1. **Fork** el repositorio desde [aquí](https://github.com/FabioDrizZt/Trabajo-Integrador-Relacional-Backend-Diplomatura-UNTREF/fork).
-2. **Clona** tu fork en tu máquina local.
+### Dependencias utilizadas:
+
+- **express**: Framework web para Node.js que facilita la creación de aplicaciones web y APIs.
+- **joi**: Biblioteca para la validación de datos, útil para validar los datos de entrada en las rutas.
+- **morgan**: Middleware para registrar las solicitudes HTTP en la consola, útil para el desarrollo y la depuración.
+- **mysql2**: Cliente MySQL para Node.js que permite interactuar con la base de datos MySQL.
+- **sequelize**: ORM (Object-Relational Mapping) para Node.js que facilita la interacción con bases de datos relacionales.
+- **standard**: Estándar de estilo para JavaScript que ayuda a mantener un código limpio y consistente.
+
+### Requisitos
+- **Node.js**
+- **MySQL**
+
+### Instalación
+1. Clona este repositorio.
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio-fork.git
+   git clone <URL_DEL_REPOSITORIO>
    ```
-3. Realiza los cambios y sube tu código a tu fork.
-4. **Sube** los cambios a tu fork.
+2. Instala las dependencias.
    ```bash
-   git add .
-   git commit -m "Descripción de los cambios"
-   git push origin main
+   npm install
    ```
+3. Configura la conexión con MySQL en el archivo `/conexion/database.js`.
+4. Para no exponer datos sensibles, uso un archivo .env para proteger los datos, tendrías que reemplazar los datos por los tuyos, se vera asi:
+   
+   ```plaintext
+      HOST=localhost
+      USER=user
+      PASSWORD=pasword
+      DATA_BASE=trailerflix
+      PORT=3000 
+   ```
+5. Inicia el servidor.
+   ```bash
+   npm start
+   ```
+2. La API estará disponible en `http://localhost:3000`.
 
-5. Agrega a los siguientes usuarios como colaboradores en tu repositorio:
-   - [FabioDrizZt](https://github.com/FabioDrizZt)
+## Endpoints
+
+- `GET /api/contenidos`: Obtiene todos los contenidos.
+- `GET /api/contenidos/:id`: Obtiene un contenido por su ID.
+- `POST /api/contenidos`: Agrega un nuevo contenido.
+- `PUT /api/contenidos/:id`: Actualiza un contenido existente.
+- `DELETE /api/contenidos/:id`: Elimina un contenido.
+
+## Tecnologías Utilizadas
+
+- **Node.js**: Entorno de ejecución para JavaScript en el servidor.
+- **Express**: Framework web para construir la API.
+- **MySQL**: Sistema de gestión de bases de datos.
+- **Sequelize**: ORM para interactuar con la base de datos MySQL.
+- **DB Diagram**: Utilizado para modelar las relaciones entre las tablas.
+
+## Autor 
+
+<a href="https://github.com/joseargentina">
+    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Logo de GitHub" width="25" height="25" style="border-radius: 50%;" />
+</a>
+
+[Github](https://github.com/joseargentina)
+
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT.
+
+  - [FabioDrizZt](https://github.com/FabioDrizZt)
    - [JuanNebbia](https://github.com/JuanNebbia)
    - [NKrein](https://github.com/NKrein)
    - [mathiasbarbosa](https://github.com/mathiasbarbosa)
-
-## Conclusión
-
-Este proyecto te permitirá aplicar conceptos clave de desarrollo backend, diseño de bases de datos y documentación. ¡Adelanta los pasos y recuerda mantener tu código limpio y bien documentado!
-
----
-
-Recuerda mantener tu código limpio, documentado y seguir las buenas prácticas de desarrollo. ¡Nos vemos en clase para revisar tu progreso el 10 de octubre de 2024!

@@ -1,6 +1,5 @@
 import { Model, DataTypes } from 'sequelize'
-import sequelize from '../conection/dataBase.js'
-// import Contenido from './contenido.js'
+import sequelize from '../conexion/dataBase.js'
 class Categorias extends Model {}
 
 Categorias.init(
@@ -23,9 +22,4 @@ Categorias.init(
     timestamps: false
   }
 )
-
-// Definir relaciones
-// Categorias.hasMany(Contenido, { foreignKey: 'id_categoria', sourceKey: 'id' })
-// Contenido.belongsTo(Categorias, { foreignKey: 'id_categoria', targetKey: 'id' })
-
 export default Categorias

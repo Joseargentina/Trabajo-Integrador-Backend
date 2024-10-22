@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize'
-import sequelize from '../conection/dataBase.js'
+import sequelize from '../conexion/dataBase.js'
 // import Contenido from './contenido.js'
 class Genero extends Model {}
 

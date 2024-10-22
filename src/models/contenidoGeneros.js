@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize'
-import sequelize from '../conection/dataBase.js'
+import sequelize from '../conexion/dataBase.js'
 import Contenido from './contenido.js'
 import Genero from './generos.js'
 class ContenidoGeneros extends Model {}
@@ -31,15 +31,11 @@ ContenidoGeneros.init(
     modelName: 'ContenidoGeneros',
     tableName: 'contenido_generos',
     indexes: [
-      { unique: false, fields: ['id_contenido'] }, // El índice debe ser único en la combinación
-      { unique: false, fields: ['id_genero'] } // Aunque son clave primaria, puedes usar índices
+      { unique: false, fields: ['id_contenido'] },
+      { unique: false, fields: ['id_genero'] }
     ],
     timestamps: false
   }
 )
-
-// Definir relaciones
-// ContenidoGeneros.belongsTo(Contenido, { foreignKey: 'id_contenido' })
-// ContenidoGeneros.belongsTo(Genero, { foreignKey: 'id_genero', targetKey: 'id' })
 
 export default ContenidoGeneros

@@ -1,5 +1,5 @@
 import express from 'express'
-import sequelize, { testConnection } from './src/conection/dataBase.js'
+import sequelize, { testConnection } from './src/conexion/dataBase.js'
 import morgan from 'morgan'
 import router from './src/routes/contenidoRoutes.js'
 import { definirRelaciones } from './src/models/relaciones.js'
@@ -27,14 +27,11 @@ app.use((req, res, next) => {
   })
 })
 
-// Server
 const PORT = process.env.PORT ?? 3001
 // Iniciar conexión a la base de datos y servidor
 testConnection()
   .then(async () => {
-    // Definir relaciones
     definirRelaciones()
-    // Sincronizar los modelos con las relaciones
     await sequelize.sync()
     console.log('Modelos y relaciones sincronizados correctamente.')
 

@@ -2,8 +2,8 @@ import Contenido from './contenido.js'
 import Categorias from './categoria.js'
 import Actor from './actor.js'
 import Genero from './generos.js'
-import ContenidoGeneros from './contenido_generos.js'
-import ContenidoActores from './contenido_actores.js'
+import ContenidoGeneros from './contenidoGeneros.js'
+import ContenidoActores from './contenidoActores.js'
 
 export function definirRelaciones () {
   // Relación de Contenido con Categorias

@@ -15,7 +15,7 @@ export async function testConnection () {
     await sequelize.authenticate()
     console.log('La conexion ha sido establecida con exito!')
   } catch (err) {
-    console.error('Error de conexión: ', err.message) // Muestra el mensaje exacto del error
-    console.error('Detalles completos: ', err) // Muestra más detalles del error
+    console.error('Error de conexión: ', err.message)
+    console.error('Detalles completos: ', err)
   }
 }
