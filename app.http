@@ -1,15 +1,15 @@
 ### Obtener todos los contenidos
-GET http://localhost:3000/api/v1/contenidos/
+GET http://localhost:3000/api/v1/contenidos
 
 ### Obtener un contenido por ID (id)
-GET http://localhost:3000/api/v1/contenido/?
+GET http://localhost:3000/api/v1/contenidos/98
 Content-Type: application/json
 
 ### Filtrar contenidos
-GET http://localhost:3000/api/v1/contenidos/
+GET http://localhost:3000/api/v1/contenidos/filtrar?titulo=Westworld&gen=ciencia&ficcion&categoria=serie
 
 ### Agregar un nuevo contenido
-POST http://localhost:3000/api/v1/contenidos/
+POST http://localhost:3000/api/v1/contenidos/agregar
 Content-Type: application/json
 
 {
@@ -24,6 +24,13 @@ Content-Type: application/json
 }
 
 ### Actualizar un contenido
-PUT http://localhost:3000/api/v1/contenidos/
+PATCH  http://localhost:3000/api/v1/contenidos/actualizar/98
+Content-Type: application/json
+
+{
+    "gen": "Misterio",
+    "duracion": 107
+}
+
 ### Eliminar un contenido
-DELETE http://localhost:3000/api/v1/contenidos/
+DELETE http://localhost:3000/api/v1/contenidos/eliminar/98

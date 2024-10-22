@@ -39,7 +39,7 @@ ContenidoGeneros.init(
 )
 
 // Definir relaciones
-ContenidoGeneros.belongsTo(Contenido, { foreignKey: 'id_contenido' })
-ContenidoGeneros.belongsTo(Genero, { foreignKey: 'id_genero', targetKey: 'id' })
+// ContenidoGeneros.belongsTo(Contenido, { foreignKey: 'id_contenido' })
+// ContenidoGeneros.belongsTo(Genero, { foreignKey: 'id_genero', targetKey: 'id' })
 
 export default ContenidoGeneros

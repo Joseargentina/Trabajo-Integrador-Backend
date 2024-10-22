@@ -41,7 +41,7 @@ El diseño debe ser bocetado primero en papel y luego implementado en la platafo
 
 3. **Filtrar contenidos**
    - Endpoint para filtrar por título, género o categoría.
-   - Control de errores para manejar coincidencias no encontradas o problemas de conexión.
+   - Control de errores para manejar coincidencias no encontradas o problemas de conexión...
 
 4. **Agregar un nuevo contenido**
    - Endpoint para agregar una nueva pelicula o serie a la base de datos.

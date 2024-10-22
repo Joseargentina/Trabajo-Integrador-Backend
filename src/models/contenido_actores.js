@@ -39,7 +39,7 @@ ContenidoActores.init(
 )
 
 // Definir relaciones
-ContenidoActores.belongsTo(Contenido, { foreignKey: 'id_contenido' })
-ContenidoActores.belongsTo(Actor, { foreignKey: 'id_actor' })
+// ContenidoActores.belongsTo(Contenido, { foreignKey: 'id_contenido' })
+// ContenidoActores.belongsTo(Actor, { foreignKey: 'id_actor' })
 
 export default ContenidoActores
