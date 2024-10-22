@@ -1,6 +1,6 @@
-import Categorias from './categoria.js'
 import { Model, DataTypes } from 'sequelize'
-import sequelize from '../conexion/dataBase.js'
+import Categorias from './categoria.js'
+import sequelize from '../conection/dataBase.js'
 import Actor from './actor.js'
 import Genero from './generos.js'
 class Contenido extends Model {}
@@ -33,7 +33,8 @@ Contenido.init({
     references: {
       model: Categorias,
       key: 'id'
-    }
+    },
+    allowNull: false
   },
   trailer: {
     type: DataTypes.STRING,

@@ -1,0 +1,29 @@
+### Obtener todos los contenidos
+GET http://localhost:3000/api/v1/contenidos/
+
+### Obtener un contenido por ID (id)
+GET http://localhost:3000/api/v1/contenido/?
+Content-Type: application/json
+
+### Filtrar contenidos
+GET http://localhost:3000/api/v1/contenidos/
+
+### Agregar un nuevo contenido
+POST http://localhost:3000/api/v1/contenidos/
+Content-Type: application/json
+
+{
+  "titulo": "A Hologram for the King",
+  "gen": "Drama",
+  "poster": "./posters/98.jpg",
+  "duracion": 97,
+  "id_categoria": 2,
+  "trailer": "https://www.youtube.com/watch?v=YDl7LxfVoZ8",
+  "temporadas": "N/A",
+  "resumen": "Ambientada en 2010, antes de la Primavera Árabe, la película cuenta la historia de un vendedor estadounidense que, desesperado por su falta de éxito, con un matrimonio en vías de fracaso y con el propósito de pagar su casa, llevar a su hija a la universidad y demostrarse su capacidad profesional, viaja a Arabia Saudita intentando asegurar un contrato tecnológico para un nuevo complejo en medio del desierto"
+}
+
+### Actualizar un contenido
+PUT http://localhost:3000/api/v1/contenidos/
+### Eliminar un contenido
+DELETE http://localhost:3000/api/v1/contenidos/
