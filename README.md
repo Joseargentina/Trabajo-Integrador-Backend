@@ -50,7 +50,7 @@ Se crearon un total de **seis tablas** para estructurar la base de datos de Trai
     - `ContenidoGeneros.belongsTo(Genero, { foreignKey: 'id_genero' })`
      
 #### Índices
-Se agregaron índices en las columnas más utilizadas para búsquedas y filtrados, mejorando el rendimiento de las consultas.
+Agregue índices en las columnas más utilizadas para búsquedas y filtrados, mejorando el rendimiento de las consultas.
 
 #### Vista `contenido_busqueda`
 **Creación de la Vista `contenido_busqueda`:**
@@ -81,25 +81,57 @@ Se agregaron índices en las columnas más utilizadas para búsquedas y filtrado
     - contenidoSchema.js
 ```
 
-### Explicación de la Estructura
+# Estructura del Proyecto
+
+## Explicación de la Estructura
 
 - `/json/trailerflix.json`: Archivo JSON que contiene los datos de películas y series.
-- `/app.js`: Archivo principal de la aplicación donde se configuran las rutas y la conexión con la base de datos.
+- `/app.js`: Archivo principal de la aplicación donde se configuran las rutas, la conexión con la base de datos y la documentación con Swagger.
 - `/app.http`: Archivo en el que se encuentran las rutas para ser probadas.
 - `src/conexion/database.js`: Archivo para establecer la conexión con MySQL.
-- `src/models`: Contiene los modelos de datos para cada entidad (contenido, categorías, géneros, actores).
+  
+### `src/models`: 
+Contiene los modelos de datos para cada entidad (contenido, categorías, géneros, actores).
+
   - `contenido.js`: Modelo para gestionar los contenidos.
   - `categoria.js`: Modelo de las categorías de los contenidos.
   - `generos.js`: Modelo de los géneros.
   - `actor.js`: Modelo de los actores.
-  - `contenidoGeneros.js`, `contenidoActores.js`: Relaciones entre contenido, géneros y actores.
+  - `contenidoGeneros.js`: Modelo para las relaciones entre contenido y géneros.
+  - `contenidoActores.js`: Modelo para las relaciones entre contenido y actores.
   - `contenidoBusqueda.js`: Funciones para realizar búsquedas filtradas.
   - `relaciones.js`: Archivo para definir relaciones entre las tablas de la base de datos.
-- `src/routes/contenidoRoutes.js`: Define las rutas del CRUD para los contenidos.
-- `src/controllers/contenidoSchema.js`: Define el esquema de validación para los contenidos.
-- `src/controllers/contenidoController.js`: Se encarga de la logica y el manejo de errores de los endpoint.
 
-## Instalación y Uso
+### `src/routes/contenidoRoutes.js`: 
+Define las rutas del CRUD para los contenidos y las respuestas esperadas con Swagger.
+
+### `src/controllers`: 
+  - `contenidoController.js`: Maneja la lógica del CRUD y la gestión de errores en los endpoints.
+  - `validacionDeDatos.js`: Define el esquema de validación para los datos esperados usando Joi.
+  - `schemas/ContenidoSchemas.js`: Define los esquemas de datos para Swagger.
+
+### `src/utils/swagger.config.js`: 
+Configuración de Swagger para documentar la API.
+
+- **`src/utils/swagger.config.js`**: Contiene la configuración y opciones de Swagger, como el título, descripción, versión de la API, y el archivo que describe los endpoints y las respuestas.
+- **`src/controllers/schemas/ContenidoSchemas.js`**: Define los esquemas de datos usados en Swagger para la documentación.
+- **`src/routes/contenidoRoutes.js`**: Aquí se han definido las respuestas esperadas por los endpoints y se integran los detalles de Swagger.
+
+
+## Documentación con Swagger
+
+Este proyecto utiliza **Swagger** para documentar y probar de manera interactiva las rutas de la API.
+
+Las rutas y esquemas de Swagger están definidos en el proyecto en las siguientes ubicaciones:
+- Configuración de Swagger: `src/utils/swagger.config.js`
+- Schemas de contenido: `src/controllers/schemas/ContenidoSchemas.js`
+- Definición de respuestas esperadas en las rutas: `src/routes/contenidoRoutes.js`
+
+### Visualización de la Documentación
+
+Una vez que el servidor esté corriendo, puedes acceder a la documentación Swagger en la siguiente URL:http://localhost:3000/api/v1
+
+## Instalación y Uso del proyecto
 
 ### Dependencias utilizadas:
 
@@ -109,6 +141,8 @@ Se agregaron índices en las columnas más utilizadas para búsquedas y filtrado
 - **mysql2**: Cliente MySQL para Node.js que permite interactuar con la base de datos MySQL.
 - **sequelize**: ORM (Object-Relational Mapping) para Node.js que facilita la interacción con bases de datos relacionales.
 - **standard**: Estándar de estilo para JavaScript que ayuda a mantener un código limpio y consistente.
+- **swagger-jsdoc**: Para generar la especificación OpenAPI en base a JSDoc.
+- **swagger-ui-express**: Para servir la interfaz gráfica de Swagger.
 
 ### Requisitos
 - **Node.js**
@@ -137,7 +171,7 @@ Se agregaron índices en las columnas más utilizadas para búsquedas y filtrado
    ```bash
    npm start
    ```
-2. La API estará disponible en `http://localhost:3000`.
+2. La API estará disponible en `http://localhost:3000/api/v1`.
 
 ## Endpoints
 
