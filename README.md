@@ -160,7 +160,7 @@ Una vez que el servidor esté corriendo, puedes acceder a la documentación Swag
 3. Configura la conexión con MySQL en el archivo `/conexion/database.js`.
 4. Para no exponer datos sensibles, uso un archivo .env para proteger los datos, tendrías que reemplazar los datos por los tuyos, se vera asi:
    
-   ```plaintext
+   ```env
       HOST=localhost
       USER=user
       PASSWORD=pasword
@@ -189,7 +189,7 @@ Una vez que el servidor esté corriendo, puedes acceder a la documentación Swag
 - **Sequelize**: ORM para interactuar con la base de datos MySQL.
 - **DB Diagram**: Utilizado para modelar las relaciones entre las tablas.
 
-## Autor 
+## Author: José Barone
 
 <a href="https://github.com/joseargentina">
     <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Logo de GitHub" width="25" height="25" style="border-radius: 50%;" />
