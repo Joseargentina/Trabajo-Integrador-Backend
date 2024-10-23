@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 ### Actualizar un contenido
-PATCH  http://localhost:3000/api/v1/contenidos/actualizar/100
+PATCH  http://localhost:3000/api/v1/contenidos/actualizar/101
 Content-Type: application/json
 
 {

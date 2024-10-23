@@ -15,6 +15,48 @@ El diseño de la base de datos fue realizado en [dbdiagram.io](https://dbdiagram
 
 Después, se creó la base de datos utilizando este diseño, y mediante una IA, se generaron los scripts necesarios para insertar los datos desde el archivo JSON proporcionado.
 
+### Creación de la Base de Datos
+
+Se crearon un total de **seis tablas** para estructurar la base de datos de TrailerFlix, las cuales son:
+
+1. **categorias**: Almacena las categorías de los contenidos (Serie o Pelicula).
+2. **generos**: Contiene los géneros disponibles para clasificar los contenidos.
+3. **contenidos**: Registra los detalles de las películas y series, vinculándose con categorías y géneros.
+4. **actores**: Almacena información sobre los actores que participan en los contenidos.
+5. **contenido_actores**: Tabla intermedia que establece la relación entre los contenidos y los actores, permitiendo múltiples actores por contenido.
+6. **contenido_generos**: Tabla intermedia que define la relación entre los contenidos y los géneros, permitiendo múltiples géneros por contenido.
+
+#### Relaciones
+- **Relaciones Clave Foránea**:
+  - `contenidos.id_categoria` se relaciona con `categorias.id`, estableciendo que cada contenido pertenece a una categoría.
+  - `contenido_actores.id_contenido` se relaciona con `contenidos.id` y `contenido_actores.id_actor` con `actores.id`, permitiendo asociar actores a los contenidos.
+  - `contenido_generos.id_contenido` se relaciona con `contenidos.id` y `contenido_generos.id_genero` con `generos.id`, permitiendo asignar múltiples géneros a cada contenido.
+
+- **Relaciones Definidas**:
+  - **Categorías a Contenidos**: 
+    - `Categorias.hasMany(Contenido, { foreignKey: 'id_categoria', sourceKey: 'id' })`
+    - `Contenido.belongsTo(Categorias, { foreignKey: 'id_categoria', targetKey: 'id' })`
+  - **Contenido a Actores (Many-to-Many)**:
+    - `Contenido.belongsToMany(Actor, { through: ContenidoActores, foreignKey: 'id_contenido' })`
+    - `Actor.belongsToMany(Contenido, { through: ContenidoActores, foreignKey: 'id_actor' })`
+  - **Contenido a Géneros (Many-to-Many)**:
+    - `Contenido.belongsToMany(Genero, { through: ContenidoGeneros, foreignKey: 'id_contenido' })`
+    - `Genero.belongsToMany(Contenido, { through: ContenidoGeneros, foreignKey: 'id_genero' })`
+  - **ContenidoActores con Contenido y Actor**:
+    - `ContenidoActores.belongsTo(Contenido, { foreignKey: 'id_contenido' })`
+    - `ContenidoActores.belongsTo(Actor, { foreignKey: 'id_actor' })`
+  - **ContenidoGeneros con Contenido y Género**:
+    - `ContenidoGeneros.belongsTo(Contenido, { foreignKey: 'id_contenido' })`
+    - `ContenidoGeneros.belongsTo(Genero, { foreignKey: 'id_genero' })`
+     
+#### Índices
+Se agregaron índices en las columnas más utilizadas para búsquedas y filtrados, mejorando el rendimiento de las consultas.
+
+#### Vista `contenido_busqueda`
+**Creación de la Vista `contenido_busqueda`:**
+   - La vista `contenido_busqueda` se crea para facilitar las consultas sobre los contenidos, incluyendo sus géneros y actores.
+   - Esta vista permite a los usuarios acceder rápidamente a información relevante sin tener que ejecutar múltiples consultas o unirse a varias tablas repetidamente.
+
 ## Estructura del Proyecto
 
 ```plaintext
@@ -125,8 +167,3 @@ Después, se creó la base de datos utilizando este diseño, y mediante una IA, 
 ## Licencia
 
 Este proyecto está bajo la licencia MIT.
-
-  - [FabioDrizZt](https://github.com/FabioDrizZt)
-   - [JuanNebbia](https://github.com/JuanNebbia)
-   - [NKrein](https://github.com/NKrein)
-   - [mathiasbarbosa](https://github.com/mathiasbarbosa)

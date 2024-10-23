@@ -3,6 +3,8 @@ import sequelize, { testConnection } from './src/conexion/dataBase.js'
 import morgan from 'morgan'
 import router from './src/routes/contenidoRoutes.js'
 import { definirRelaciones } from './src/models/relaciones.js'
+import swaggerUi from 'swagger-ui-express'
+import swaggerDocs from './src/utils/swagger.config.js'
 
 process.loadEnvFile()
 
@@ -12,6 +14,9 @@ app.disable('x-powered-by')
 // Middlewares
 app.use(express.json())
 app.use(morgan('dev'))
+
+// Swagger Config
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 app.get('/', (req, res) => { res.status(200).send('Bienvenidos a TrailerFlix') })
 
@@ -38,6 +43,7 @@ testConnection()
     // Iniciar servidor después de la sincronización exitosa
     app.listen(PORT, () => {
       console.log(`Server running on port: http://localhost:${PORT}`)
+      console.log(`Docuentación de la API en http://localhost:${PORT}/api-docs`)
     })
   }).catch((error) => {
     console.error('No se pudo conectar a la base de datos:', error.message)
