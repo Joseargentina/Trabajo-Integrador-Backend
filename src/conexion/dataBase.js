@@ -1,12 +1,14 @@
 import { Sequelize } from 'sequelize'
-process.loadEnvFile()
+import { configDotenv } from 'dotenv'
+const ENV = process.env.NODE_ENV || 'local'
+configDotenv({ path: `.env.${ENV}` })
 
-const { DATA_BASE, USER, PASSWORD, HOST } = process.env
+const { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_DIALECT, DB_PORT } = process.env
 
-const sequelize = new Sequelize(DATA_BASE, USER, PASSWORD, {
-  host: HOST,
-  dialect: 'mysql',
-  port: 3306
+const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+  host: DB_HOST,
+  dialect: DB_DIALECT,
+  port: DB_PORT
 })
 export default sequelize
 

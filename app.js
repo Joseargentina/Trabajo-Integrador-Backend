@@ -5,8 +5,13 @@ import router from './src/routes/contenidoRoutes.js'
 import { definirRelaciones } from './src/models/relaciones.js'
 import swaggerUi from 'swagger-ui-express'
 import swaggerDocs from './src/utils/swagger.config.js'
+import { config as configDotenv } from 'dotenv'
 
-process.loadEnvFile()
+const ENV = process.env.NODE_ENV || 'local'
+configDotenv({ path: `.env.${ENV}` })
+
+console.log(`Environment: ${ENV}`) // Para verificar el entorno
+console.log(`Port: ${process.env.PORT}`) // Para verificar si lee el puerto
 
 const app = express()
 app.disable('x-powered-by')
@@ -32,7 +37,7 @@ app.use((req, res, next) => {
   })
 })
 
-const PORT = process.env.PORT ?? 3001
+const PORT = process.env.PORT ?? 3000
 // Iniciar conexión a la base de datos y servidor
 testConnection()
   .then(async () => {
