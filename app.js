@@ -6,6 +6,7 @@ import { definirRelaciones } from './src/models/relaciones.js'
 import swaggerUi from 'swagger-ui-express'
 import swaggerDocs from './src/utils/swagger.config.js'
 import { config as configDotenv } from 'dotenv'
+import cors from 'cors'
 
 const ENV = process.env.NODE_ENV || 'local'
 configDotenv({ path: `.env.${ENV}` })
@@ -15,6 +16,15 @@ console.log(`Port: ${process.env.PORT}`) // Para verificar si lee el puerto
 
 const app = express()
 app.disable('x-powered-by')
+
+app.use(cors({
+  origin: [
+    'http://localhost:3000', // URL de tu entorno local
+    'https://trabajo-integrador-backend-production.up.railway.app' // URL de tu servidor en producción
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'] // Encabezados permitidos
+}))
 
 // Middlewares
 app.use(express.json())

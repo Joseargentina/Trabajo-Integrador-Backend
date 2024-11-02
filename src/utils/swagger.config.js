@@ -14,7 +14,7 @@ const swaggerOptions = {
         description: 'Servidor local'
       },
       {
-        url: 'https://trabajo-integrador-backend-production.up.railway.app/',
+        url: 'https://trabajo-integrador-backend-production.up.railway.app',
         description: 'Servidor Railway'
       }
     ]
