@@ -12,6 +12,10 @@ const swaggerOptions = {
       {
         url: 'http://localhost:3000/api/v1',
         description: 'Servidor local'
+      },
+      {
+        url: 'https://trabajo-integrador-backend-production.up.railway.app/',
+        description: 'Servidor Railway'
       }
     ]
   },

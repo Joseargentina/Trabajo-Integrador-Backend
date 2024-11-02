@@ -4,6 +4,7 @@ const ENV = process.env.NODE_ENV || 'local'
 configDotenv({ path: `.env.${ENV}` })
 
 const { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_DIALECT, DB_PORT } = process.env
+console.log('Variables de entorno cargadas:', { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_DIALECT, DB_PORT })
 
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   host: DB_HOST,
