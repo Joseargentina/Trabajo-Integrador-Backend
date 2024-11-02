@@ -36,7 +36,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 app.get('/', (req, res) => { res.status(200).send('Bienvenidos a TrailerFlix') })
 
 // Ruta para '/contenido' y sus subrutas
-app.use('/api/v1', router)
+app.use(router)
 
 // Midleware para manejo de rutas incorrectas
 app.use((req, res, next) => {

@@ -1,15 +1,15 @@
 ### Obtener todos los contenidos
-GET http://localhost:3000/api/v1/contenidos
+GET http://localhost:3001/contenidos
 
 ### Obtener un contenido por ID (id)
-GET http://localhost:3000/api/v1/contenidos/28
+GET http://localhost:3001/contenidos/28
 Content-Type: application/json
 
 ### Filtrar contenidos
-GET http://localhost:3000/api/v1/contenidos/filtrar?titulo=Westworld&gen=ciencia&ficcion&categoria=serie
+GET http://localhost:3001/contenidos/filtrar?titulo=Westworld&gen=ciencia&ficcion&categoria=serie
 
 ### Agregar un nuevo contenido
-POST http://localhost:3000/api/v1/contenidos/agregar
+POST http://localhost:3001/contenidos/agregar
 Content-Type: application/json
 
 {
@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 ### Actualizar un contenido
-PATCH  http://localhost:3000/api/v1/contenidos/actualizar/101
+PATCH  http://localhost:3001/contenidos/actualizar/101
 Content-Type: application/json
 
 {
@@ -33,4 +33,4 @@ Content-Type: application/json
 }
 
 ### Eliminar un contenido
-DELETE http://localhost:3000/api/v1/contenidos/eliminar/100
+DELETE http://localhost:3001/contenidos/eliminar/100
