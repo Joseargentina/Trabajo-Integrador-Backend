@@ -2,7 +2,7 @@
 GET http://localhost:3001/contenidos
 
 ### Obtener un contenido por ID (id)
-GET http://localhost:3001/contenidos/28
+GET http://localhost:3001/contenidos/108
 Content-Type: application/json
 
 ### Filtrar contenidos
@@ -13,18 +13,18 @@ POST http://localhost:3001/contenidos/agregar
 Content-Type: application/json
 
 {
-  "titulo": "A Hologram for the King",
-  "gen": "Drama",
-  "poster": "./posters/98.jpg",
-  "duracion": 97,
-  "id_categoria": 2,
-  "trailer": "https://www.youtube.com/watch?v=YDl7LxfVoZ8",
-  "temporadas": "N/A",
-  "resumen": "Ambientada en 2010, antes de la Primavera Árabe, la película cuenta la historia de un vendedor estadounidense que, desesperado por su falta de éxito, con un matrimonio en vías de fracaso y con el propósito de pagar su casa, llevar a su hija a la universidad y demostrarse su capacidad profesional, viaja a Arabia Saudita intentando asegurar un contrato tecnológico para un nuevo complejo en medio del desierto"
+      "titulo": "Undisputed",
+      "gen": "Accion",
+      "poster": "https://undisputed-2002.com/poster.jpg",
+      "duracion": 96,
+      "id_categoria": 2,
+      "trailer": "https://www.youtube.com/watch?v=Diy3fuwhxQw",
+      "temporadas": "N/A",
+      "resumen": "George 'Iceman' Chambers (Ving Rhames) es un boxeador de peso pesado que es enviado a la prisión (récord de 46 victorias y 1 empate), por ser acusado de violación. A su llegada a la prisión, él oye hablar de Monroe Hutchen (Wesley Snipes), que en la prisión es clasificado como el campeón de boxeo (con un récord de 68 victorias y 0 derrotas). Cuando están ambos en el comedor, Iceman le pregunta curioso sobre sus habilidades en el boxeo y Monroe reconoce que es campeón de todas las categorías y pesos (mientras que Chambers sólo es campeón de los pesos pesados), después de averiguar que Monroe también ha sido campeón durante diez años seguidos (el tiempo que ha estado en la cárcel) procede a burlarse de él dándole una bofetada (Monroe se la devuelve dándole un rápido puñetazo en el pecho)."
 }
 
 ### Actualizar un contenido
-PATCH  http://localhost:3001/contenidos/actualizar/101
+PATCH  http://localhost:3001/contenidos/actualizar/108
 Content-Type: application/json
 
 {
@@ -33,4 +33,4 @@ Content-Type: application/json
 }
 
 ### Eliminar un contenido
-DELETE http://localhost:3001/contenidos/eliminar/100
+DELETE http://localhost:3001/contenidos/eliminar/108

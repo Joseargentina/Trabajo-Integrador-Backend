@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-export const contenidoSchema = Joi.object({
+export const contenidoAgregar = Joi.object({
   titulo: Joi.string().max(100).required(),
   gen: Joi.string().max(50).required(),
   poster: Joi.string().max(255).required(),

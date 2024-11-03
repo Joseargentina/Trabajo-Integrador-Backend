@@ -2,7 +2,7 @@
 import Contenido from '../models/contenido.js'
 import Categorias from '../models/categoria.js'
 import { Op } from 'sequelize'
-import { filtrosSchema, contenidoSchema, ContenidoActualizar } from '../controllers/validacionDeDatos.js'
+import { filtrosSchema, ContenidoActualizar, contenidoAgregar } from '../controllers/validacionDeDatos.js'
 
 export const getAllContent = async (req, res) => {
   try {
@@ -80,7 +80,7 @@ export const filterContent = async (req, res) => {
 }
 
 export const addContent = async (req, res) => {
-  const { error } = await contenidoSchema.validateAsync(req.body)
+  const { error } = await contenidoAgregar.validateAsync(req.body)
   if (error) {
     return res.status(400).json({
       ok: false,
@@ -92,6 +92,16 @@ export const addContent = async (req, res) => {
   const { titulo, gen, poster, duracion, id_categoria, trailer, temporadas, resumen } = req.body
 
   try {
+    // Verificar si ya existe un contenido con el mismo título
+    const existingContent = await Contenido.findOne({ where: { titulo } })
+    if (existingContent) {
+      return res.status(409).json({
+        ok: false,
+        status: 409,
+        message: 'El contenido ya existe.'
+      })
+    }
+
     const product = await Contenido.create({
       titulo,
       gen,
