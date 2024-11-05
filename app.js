@@ -22,7 +22,7 @@ app.use(cors({
     'http://localhost:3000', // URL de tu entorno local
     'https://trabajo-integrador-backend-production.up.railway.app' // URL de tu servidor en producción
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Métodos permitidos
   allowedHeaders: ['Content-Type', 'Authorization'] // Encabezados permitidos
 }))
 

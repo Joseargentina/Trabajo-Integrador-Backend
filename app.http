@@ -13,18 +13,18 @@ POST http://localhost:3001/contenidos/agregar
 Content-Type: application/json
 
 {
-      "titulo": "Undisputed",
+      "titulo": "The Batman",
       "gen": "Accion",
-      "poster": "https://undisputed-2002.com/poster.jpg",
-      "duracion": 96,
+      "poster": "https://the-batman.com/poster.jpg",
+      "duracion": 130,
       "id_categoria": 2,
-      "trailer": "https://www.youtube.com/watch?v=Diy3fuwhxQw",
+      "trailer": "https://www.youtube.com/watch?v=FUP3P9_mqvA&t=5s",
       "temporadas": "N/A",
-      "resumen": "George 'Iceman' Chambers (Ving Rhames) es un boxeador de peso pesado que es enviado a la prisión (récord de 46 victorias y 1 empate), por ser acusado de violación. A su llegada a la prisión, él oye hablar de Monroe Hutchen (Wesley Snipes), que en la prisión es clasificado como el campeón de boxeo (con un récord de 68 victorias y 0 derrotas). Cuando están ambos en el comedor, Iceman le pregunta curioso sobre sus habilidades en el boxeo y Monroe reconoce que es campeón de todas las categorías y pesos (mientras que Chambers sólo es campeón de los pesos pesados), después de averiguar que Monroe también ha sido campeón durante diez años seguidos (el tiempo que ha estado en la cárcel) procede a burlarse de él dándole una bofetada (Monroe se la devuelve dándole un rápido puñetazo en el pecho)."
+      "resumen": "The Batman (Batman en Hispanoamérica) es una película estadounidense de superhéroes dirigida por Matt Reeves y basada en el personaje homónimo creado por Bob Kane y Bill Finger para DC Comics. El guion fue escrito por Reeves y Peter Craig, y narra los acontecimientos del vigilante Batman durante su segundo año luchando contra el crimen y la corrupción en Gotham City, además de enfrentarse al asesino serial Riddler. La cinta está protagonizada por Robert Pattinson como el personaje titular, acompañado de un elenco que incluye a Zoë Kravitz, Paul Dano, Jeffrey Wright, John Turturro, Peter Sarsgaard, Andy Serkis y Colin Farrell."
 }
 
 ### Actualizar un contenido
-PATCH  http://localhost:3001/contenidos/actualizar/108
+PATCH  http://localhost:3001/contenidos/actualizar/109
 Content-Type: application/json
 
 {
